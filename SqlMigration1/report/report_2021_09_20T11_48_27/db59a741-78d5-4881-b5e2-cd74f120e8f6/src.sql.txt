@@ -1,0 +1,7 @@
+CREATE TABLE `tran_bobot_vektor` (
+  `kata` varchar(50) DEFAULT NULL,
+  `tf_idf_norm` double DEFAULT NULL,
+  `kode_pegawai` int(11) DEFAULT NULL,
+  `kode_jurusan` int(11) DEFAULT NULL,
+  `kode_fakultas` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

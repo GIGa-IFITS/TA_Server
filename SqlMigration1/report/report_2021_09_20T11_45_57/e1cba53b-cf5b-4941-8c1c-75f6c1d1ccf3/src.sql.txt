@@ -1,0 +1,21 @@
+CREATE TABLE `tmst_laboratorium_baru` (
+  `kode` int(11) NOT NULL,
+  `kode_perguruan_tinggi` varchar(6) DEFAULT NULL,
+  `kode_fakultas` varchar(2) DEFAULT NULL,
+  `kode_jurusan` varchar(3) DEFAULT NULL,
+  `kode_program_studi` varchar(3) DEFAULT NULL,
+  `kode_status_validasi` varchar(2) DEFAULT NULL,
+  `kode_log_audit` varchar(255) DEFAULT NULL,
+  `nama_indonesia` varchar(100) DEFAULT NULL,
+  `nama_inggris` varchar(100) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `kode_periode_pelaporan` varchar(255) DEFAULT NULL,
+  `jumlah_aktifitas` int(11) DEFAULT NULL,
+  `email_lab` varchar(25) DEFAULT NULL,
+  `telp_lab` varchar(25) DEFAULT NULL,
+  `fax_lab` varchar(25) DEFAULT NULL,
+  `website_lab` varchar(25) DEFAULT NULL,
+  `flag` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

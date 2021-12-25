@@ -1,0 +1,4 @@
+CREATE TABLE `master_flag` (
+  `kode_flag` int(11) NOT NULL,
+  `sumber_data` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

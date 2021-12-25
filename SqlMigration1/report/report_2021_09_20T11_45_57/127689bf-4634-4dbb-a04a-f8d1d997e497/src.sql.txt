@@ -1,0 +1,6 @@
+CREATE TABLE `anggota_labs` (
+  `kode` int(11) DEFAULT NULL,
+  `kode_pegawai` int(11) DEFAULT NULL,
+  `kode_labs` int(11) DEFAULT NULL,
+  `kode_anggota_sebagai` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

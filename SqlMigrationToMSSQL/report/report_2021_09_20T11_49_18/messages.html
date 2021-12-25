@@ -1,0 +1,63 @@
+
+<html>
+    <head>
+        <meta content='IE=EmulateIE9' http-equiv='X-UA-Compatible' />
+        <meta content='text/html;charset=UTF-8' http-equiv='Content-Type' />
+        <script type='text/javascript' src='js/functions.js'></script>
+        <script type='text/javascript' src='js/messages.js'></script>
+        <link media='all' rel='stylesheet' type='text/css' href='css/messages.css' />
+    </head>
+    <body id='messages-body' scroll='no' onresize='buttonStatusReset();'>
+        <a id='expander_td' class='expander_td' tab-index='0' onclick='showMessages(!isExpanded());return false;' role='button' aria-label='Messages section expanded, press Enter to collapse' href='javascript:void(0);'>
+          <span></span>
+        </a>
+        <div class='main-messages' id='mainDiv'>
+            <div class='panel'>
+                <a id='error' href='javascript:void(0);' role='tab' class='button' onclick='severityTabSelected(this, true)'>
+                    <img class='panel-tab-image' src='img/error.gif'/>
+                    <span class='panel-tab-text' id='espan'>Error (0)</span>
+                    <img class='expander-arrow sort-descending' src='img/expander_arrow_down.gif'/>
+                    <img class='expander-arrow sort-ascending hidden-element' src='img/expander_arrow_up.gif'/>
+                </a>
+                <a id='warning' href='javascript:void(0);' role='tab' class='button' onclick='severityTabSelected(this, true)'>
+                    <img class='panel-tab-image' src='img/warning.gif'/>
+                    <span class='panel-tab-text' id='wspan'>Warning (0)</span>
+                    <img class='expander-arrow sort-descending' src='img/expander_arrow_down.gif'/>
+                    <img class='expander-arrow sort-ascending hidden-element' src='img/expander_arrow_up.gif'/>
+                </a>
+                <a id='info' href='javascript:void(0);' role='tab' class='button' onclick='severityTabSelected(this, true)'>
+                    <img class='panel-tab-image' src='img/info.gif'/>
+                    <span class='panel-tab-text' id='ispan'>Info (0)</span>
+                    <img class='expander-arrow sort-descending' src='img/expander_arrow_down.gif'/>
+                    <img class='expander-arrow sort-ascending hidden-element' src='img/expander_arrow_up.gif'/>
+                </a>
+                <div class='messages-node-select'>
+                    <span>Messages for:</span>
+                    <select class='node-select' id='node-select' onchange='nodeSelectChanged(this)'>
+                        <option id='select-all' value='all'>All Objects</option>
+                        <option id='select-variable' value=''>Current Object</option>
+                    </select>
+                </div>
+            </div>
+            <div id='innerDiv'>
+                <div class='messages-window'>
+
+<div id='error-messages' class='all'>
+<div class='message-flex-body'>
+</div>
+</div>
+<div id='warning-messages' class='all'>
+<div class='message-flex-body'>
+</div>
+</div>
+<div id='info-messages' class='all'>
+<div class='message-flex-body'>
+</div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

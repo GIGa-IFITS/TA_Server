@@ -1,0 +1,9 @@
+CREATE TABLE `mapping_dosen_tags` (
+  `id` int(11) NOT NULL,
+  `kode_dosen` varchar(50) NOT NULL,
+  `kode_bidang_ahli` varchar(50) DEFAULT NULL,
+  `bidang_ahli` varchar(150) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

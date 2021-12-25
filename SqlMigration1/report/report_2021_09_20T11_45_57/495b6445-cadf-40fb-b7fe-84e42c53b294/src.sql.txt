@@ -1,0 +1,4 @@
+CREATE TABLE `tran_json_node` (
+  `kode_pegawai` int(11) DEFAULT NULL,
+  `id_node` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

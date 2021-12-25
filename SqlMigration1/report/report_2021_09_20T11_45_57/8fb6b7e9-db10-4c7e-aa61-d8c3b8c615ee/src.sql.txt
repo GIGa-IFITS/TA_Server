@@ -1,0 +1,4 @@
+CREATE TABLE `mapping_publikasi_itsdw_baru` (
+  `id_resits` int(11) DEFAULT NULL,
+  `id_item_itsdw` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

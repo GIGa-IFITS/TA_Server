@@ -1,0 +1,7 @@
+CREATE TABLE `tran_bobot_dosen_peneliti` (
+  `bobot_peneliti` double DEFAULT NULL,
+  `bobot_topik` double DEFAULT NULL,
+  `final` double DEFAULT NULL,
+  `kode_pegawai1` int(11) DEFAULT NULL,
+  `kode_pegawai2` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

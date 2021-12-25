@@ -1,0 +1,5 @@
+CREATE TABLE `tref_user_admin` (
+  `username` longtext NOT NULL,
+  `password` longtext NOT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

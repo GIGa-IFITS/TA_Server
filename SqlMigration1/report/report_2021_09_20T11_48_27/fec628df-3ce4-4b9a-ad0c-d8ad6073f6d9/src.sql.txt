@@ -1,0 +1,7 @@
+CREATE TABLE `tran_temp_publikasi_distinct` (
+  `id` int(11) NOT NULL,
+  `tahun` int(11) NOT NULL,
+  `judul` longtext NOT NULL,
+  `tipe` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

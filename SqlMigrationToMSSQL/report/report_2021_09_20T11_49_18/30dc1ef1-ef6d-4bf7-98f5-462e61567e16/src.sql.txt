@@ -1,0 +1,17 @@
+CREATE TABLE `tran_ppm_dosen` (
+  `kode` int(11) NOT NULL,
+  `kode_pegawai` varchar(255) DEFAULT NULL,
+  `kode_jenis_peneliti` varchar(255) DEFAULT NULL,
+  `kode_status_validasi` varchar(255) DEFAULT NULL,
+  `kode_periode_pelaporan` varchar(255) DEFAULT NULL,
+  `bulan` varchar(255) DEFAULT NULL,
+  `tahun` varchar(255) DEFAULT NULL,
+  `judul` varchar(0) DEFAULT NULL,
+  `kata_kunci` varchar(255) DEFAULT NULL,
+  `total_waktu` varchar(255) DEFAULT NULL,
+  `lokasi` varchar(255) DEFAULT NULL,
+  `kode_log_audit` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

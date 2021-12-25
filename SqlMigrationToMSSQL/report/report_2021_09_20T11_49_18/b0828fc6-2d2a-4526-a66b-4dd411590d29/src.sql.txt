@@ -1,0 +1,23 @@
+CREATE TABLE `mapping_temp_dosen` (
+  `kode_fakultas` char(2) DEFAULT NULL,
+  `kode_jurusan` char(5) DEFAULT NULL,
+  `nama_dosen` text DEFAULT NULL,
+  `gelar_akademik_depan` varchar(30) DEFAULT NULL,
+  `gelar_akademik_belakang` varchar(30) DEFAULT NULL,
+  `skor_spmi` double DEFAULT NULL,
+  `kualifikasi_ahli` varchar(300) DEFAULT NULL,
+  `nama_jurusan_en` varchar(300) DEFAULT NULL,
+  `journals` int(11) DEFAULT NULL,
+  `conferences` int(11) DEFAULT NULL,
+  `books` int(11) DEFAULT NULL,
+  `kode_pegawai` int(11) DEFAULT NULL,
+  `thesis` int(11) DEFAULT NULL,
+  `paten` int(11) DEFAULT NULL,
+  `research` int(11) DEFAULT NULL,
+  `id_node` int(11) DEFAULT NULL,
+  `nip` varchar(30) DEFAULT NULL,
+  `nama_fakultas_en` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `best_term` varchar(255) DEFAULT NULL,
+  `id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

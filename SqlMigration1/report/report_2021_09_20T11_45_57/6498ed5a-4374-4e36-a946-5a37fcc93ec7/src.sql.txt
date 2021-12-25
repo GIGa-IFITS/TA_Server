@@ -1,0 +1,4 @@
+CREATE TABLE `tref_profil_dosen_hidden` (
+  `item` varchar(255) NOT NULL,
+  `kode_pegawai` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

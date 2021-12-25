@@ -1,0 +1,11 @@
+CREATE TABLE `tran_bidang_ahli` (
+  `kode` int(11) NOT NULL,
+  `kode_pegawai` int(11) DEFAULT NULL,
+  `kode_bidang_ahli` int(11) DEFAULT NULL,
+  `kode_log_audit` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `kode_periode_pelaporan` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

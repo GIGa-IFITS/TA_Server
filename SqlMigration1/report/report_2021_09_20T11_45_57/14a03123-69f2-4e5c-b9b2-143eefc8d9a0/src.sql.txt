@@ -1,0 +1,11 @@
+CREATE TABLE `mapping_temp_dosen_scopus` (
+  `kode_fakultas` char(3) DEFAULT NULL,
+  `kode_jurusan` char(5) DEFAULT NULL,
+  `gelar_depan` varchar(30) DEFAULT NULL,
+  `nama_dosen` varchar(300) DEFAULT NULL,
+  `gelar_belakang` varchar(30) DEFAULT NULL,
+  `nama_jurusan` varchar(300) DEFAULT NULL,
+  `scopus_jurnal` int(11) DEFAULT NULL,
+  `scopus_conferences` int(11) DEFAULT NULL,
+  `nip` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

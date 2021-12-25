@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+<link rel=stylesheet data-name='vs/editor/editor.main' href='../monaco/editor.main.css' type='text/css'>
+<link rel='stylesheet' type='text/css' href='../css/style.css'></link>
+<script type='text/javascript' src='../js/functions.js'></script>
+<script async='async' type='text/javascript' src='../monaco/mysql.js'></script>
+<script async='async' type='text/javascript' src='../monaco/sql.js'></script>
+<script src='../monaco/loader.js'></script>
+<script src='../monaco/editor.main.nls.js'></script>
+<script src='../monaco/editor.main.js'></script>
+</head>
+<body class='sql-body' id='scrollable-body'>
+<div id='left-side' class='left-side'><div class='panel'>
+<span class='panel-title source'>&nbsp;Source</span>
+<img tabindex='0' aria-label='Previous problem' role='button' class='nav-button nav-button-disabled' id='source_previous_problem' src='../img/previous_problem.gif' onclick='handleProblemButtonClick(-1, true)' title='Previous problem' />
+<img tabindex='0' aria-label='Next problem' role='button' class='nav-button nav-button-disabled' id='source_next_problem' src='../img/next_problem.gif' onclick='handleProblemButtonClick(1, true)' title='Next problem' />
+<img tabindex='0' aria-label='Previous bookmark' role='button' class='nav-button nav-button-disabled' id='source_previous_bookmark' src='../img/previous_bookmark.gif' onclick='handleBookmarkButtonClick(-1, true)' title='Previous bookmark' />
+<img tabindex='0' aria-label='Next bookmark' role='button' class='nav-button nav-button-disabled' id='source_next_bookmark' src='../img/next_bookmark.gif' onclick='handleBookmarkButtonClick(1, true)' title='Next bookmark' />
+<img tabindex='0' aria-label='Clear bookmarks' role='button' class='nav-button nav-button-disabled' id='source_clear_bookmarks' src='../img/clear_bookmarks.gif' onclick='handleBookmarkButtonClick(0, true)' title='Clear bookmarks' />
+<a class='raw-source-link' target='_blank' aria-label='Raw source' href='./src.sql.txt');'>Raw source</a>
+</div>
+<div class='editor-container'>
+<div id='monaco-left-side'></div><pre id='monaco-left-side-sql'>
+CREATE
+	TABLE `tran_publikasi_dosen_tetap_distinct`
+		(
+			`id` int(11) NOT NULL, 
+			`tahun` int(11) NOT NULL, 
+			`judul` longtext NOT NULL, 
+			`tipe` longtext DEFAULT NULL, 
+			 PRIMARY KEY  (`id`) 
+		)  ENGINE = InnoDB DEFAULT  CHARSET = utf8mb4;
+</pre></div></div><div id='resize-bar' class='resize-bar'></div><div id='right-side' class='right-side'><div class='panel'>
+<span class='panel-title target'>&nbsp;Target</span>
+<img tabindex='0' aria-label='Previous problem' role='button' class='nav-button nav-button-disabled' id='target_previous_problem' src='../img/previous_problem.gif' onclick='handleProblemButtonClick(-1, false)' title='Previous problem' />
+<img tabindex='0' aria-label='Next problem' role='button' class='nav-button nav-button-disabled' id='target_next_problem' src='../img/next_problem.gif' onclick='handleProblemButtonClick(1, false)' title='Next problem' />
+<img tabindex='0' aria-label='Previous bookmark' role='button' class='nav-button nav-button-disabled' id='target_previous_bookmark' src='../img/previous_bookmark.gif' onclick='handleBookmarkButtonClick(-1, false)' title='Previous bookmark' />
+<img tabindex='0' aria-label='Next bookmark' role='button' class='nav-button nav-button-disabled' id='target_next_bookmark' src='../img/next_bookmark.gif' onclick='handleBookmarkButtonClick(1, false)' title='Next bookmark' />
+<img tabindex='0' aria-label='Clear bookmarks' role='button' class='nav-button nav-button-disabled' id='target_clear_bookmarks' src='../img/clear_bookmarks.gif' onclick='handleBookmarkButtonClick(0, false)' title='Clear bookmarks' />
+</div>
+<div class='editor-container'>
+<div id='monaco-right-side'></div><pre id='monaco-right-side-sql'>
+CREATE TABLE VISUALISASI_DATA.[tran_publikasi_dosen_tetap_distinct]
+(
+	id int NOT NULL, 
+	tahun int NOT NULL, 
+	judul nvarchar(max) NOT NULL, 
+	tipe nvarchar(max) NULL DEFAULT NULL, 
+	CONSTRAINT [PK_tran_publikasi_dosen_tetap_distinct_id] PRIMARY KEY (id)
+)
+GO</pre></div></div><script>
+var sourceLanguage = 'mysql';
+var sourceEditorSelections = [{start:56, end:81, guid:'6a3c2c92-c060-4886-8c52-f2219334659c', reflection:['e04de8f2-beed-4d8a-b7df-e1798c2dc53b'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:83, end:111, guid:'5bc40d7f-c90b-4b15-bd1c-535a890a6640', reflection:['88e2138c-7df4-42e2-a13c-d69e293c80bd'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:113, end:142, guid:'bfd2893f-9834-452e-8959-fe466f64c766', reflection:['51640e5b-6ed3-471d-8fee-2bcb3e4473e8'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:164, end:176, guid:'41b1cfce-7153-4b7f-90c4-9d01a4e8ebcb', reflection:['7536126a-118a-447c-8a7b-f1ae1eb239d1'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:144, end:176, guid:'7e6b9e5f-9c52-4881-a41f-1cf327874e81', reflection:['3425e967-223a-4a89-a5f9-9274301fb2f0'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:178, end:203, guid:'d60d146c-0028-417b-8c03-715cdb4436a3', reflection:['b4294978-57bb-45d0-921a-05dcf7ad98aa'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:7, end:251, guid:'1c5d067b-54a8-4f4d-8730-b9fa928ae645', reflection:['ae99c5d9-f090-4a3e-adee-34c552362aa3'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:0, end:252, guid:'1a15270f-0cf9-4ded-bebc-47e78e52e677', reflection:['5a0f16e6-2ff2-4f70-afd9-86f2963df902'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:0, end:252, guid:'6466f150-0ef9-48b9-bd80-3998f220ccb6', reflection:['5a0f16e6-2ff2-4f70-afd9-86f2963df902'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]}];
+var targetLanguage = 'sql';
+var targetEditorSelections = [{start:70, end:87, guid:'e04de8f2-beed-4d8a-b7df-e1798c2dc53b', reflection:['6a3c2c92-c060-4886-8c52-f2219334659c'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:89, end:109, guid:'88e2138c-7df4-42e2-a13c-d69e293c80bd', reflection:['5bc40d7f-c90b-4b15-bd1c-535a890a6640'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:111, end:141, guid:'51640e5b-6ed3-471d-8fee-2bcb3e4473e8', reflection:['bfd2893f-9834-452e-8959-fe466f64c766'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:169, end:181, guid:'7536126a-118a-447c-8a7b-f1ae1eb239d1', reflection:['41b1cfce-7153-4b7f-90c4-9d01a4e8ebcb'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:143, end:181, guid:'3425e967-223a-4a89-a5f9-9274301fb2f0', reflection:['7e6b9e5f-9c52-4881-a41f-1cf327874e81'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:183, end:256, guid:'b4294978-57bb-45d0-921a-05dcf7ad98aa', reflection:['d60d146c-0028-417b-8c03-715cdb4436a3'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:8, end:258, guid:'ae99c5d9-f090-4a3e-adee-34c552362aa3', reflection:['1c5d067b-54a8-4f4d-8730-b9fa928ae645'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:0, end:258, guid:'5a0f16e6-2ff2-4f70-afd9-86f2963df902', reflection:['1a15270f-0cf9-4ded-bebc-47e78e52e677','6466f150-0ef9-48b9-bd80-3998f220ccb6'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]}];
+</script><script src='../js/code.js'></script></body></html>

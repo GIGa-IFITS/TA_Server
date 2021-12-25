@@ -1,0 +1,8 @@
+CREATE TABLE `mapping_laboratorium` (
+  `kode_lab_resits` int(11) NOT NULL,
+  `kode_fakultas_resits` int(11) DEFAULT NULL,
+  `kode_jurusan_resits` int(11) DEFAULT NULL,
+  `kode_lab_simpel` int(11) NOT NULL,
+  `kode_fakultas_simpel` int(11) DEFAULT NULL,
+  `kode_jurusan_simpel` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

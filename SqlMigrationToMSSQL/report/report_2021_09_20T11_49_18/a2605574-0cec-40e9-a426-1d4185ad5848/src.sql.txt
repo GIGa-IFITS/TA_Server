@@ -1,0 +1,16 @@
+CREATE TABLE `tran_anggota_penelitian_dosen` (
+  `kode` int(11) NOT NULL,
+  `kode_publikasi_dosen_tetap` int(11) DEFAULT NULL,
+  `kode_pegawai` varchar(255) DEFAULT NULL,
+  `kode_log_audit` varchar(255) DEFAULT NULL,
+  `status_ketua` varbinary(1) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `kode_periode_pelaporan` varchar(255) DEFAULT NULL,
+  `jenis_peneliti` varchar(255) DEFAULT NULL,
+  `urutan` varchar(255) DEFAULT NULL,
+  `id_bkd` bigint(20) DEFAULT NULL,
+  `kode_publikasi` int(11) DEFAULT NULL,
+  PRIMARY KEY (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

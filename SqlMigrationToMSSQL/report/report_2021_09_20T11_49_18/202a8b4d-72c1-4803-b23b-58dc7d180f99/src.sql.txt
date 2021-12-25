@@ -1,0 +1,10 @@
+CREATE TABLE `jumlah_scopus` (
+  `id_jum` int(11) NOT NULL,
+  `kode` int(11) DEFAULT NULL,
+  `nip` varchar(50) DEFAULT NULL,
+  `nama` varchar(255) DEFAULT NULL,
+  `Jurnal_scopus` int(11) DEFAULT NULL,
+  `Seminar_scopus` int(11) DEFAULT NULL,
+  `jumlah` double DEFAULT NULL,
+  PRIMARY KEY (`id_jum`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

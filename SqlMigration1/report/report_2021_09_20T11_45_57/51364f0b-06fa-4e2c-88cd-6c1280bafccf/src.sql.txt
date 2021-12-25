@@ -1,0 +1,5 @@
+CREATE TABLE `tran_bobot_kata_indeks` (
+  `kata` varchar(255) NOT NULL,
+  `df` int(11) DEFAULT NULL,
+  `idf_norm` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

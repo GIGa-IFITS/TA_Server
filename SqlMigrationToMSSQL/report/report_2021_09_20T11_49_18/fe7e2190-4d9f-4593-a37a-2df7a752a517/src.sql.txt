@@ -1,0 +1,10 @@
+CREATE TABLE `mapping_fakultas_jurusan` (
+  `fakultas_id_itsdw` int(11) DEFAULT NULL,
+  `fakultas_id_simpel` int(11) DEFAULT NULL,
+  `fakultas_id_resits` int(11) DEFAULT NULL,
+  `jurusan_id_itsdw` int(11) DEFAULT NULL,
+  `jurusan_id_simpel` int(11) DEFAULT NULL,
+  `jurusan_id_resits` int(11) DEFAULT NULL,
+  `fakultas_id_silacak` int(11) DEFAULT NULL,
+  `jurusan_id_silacak` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

@@ -1,0 +1,9 @@
+CREATE TABLE `mapping_dosen` (
+  `id` int(11) NOT NULL,
+  `nip_dosen` varchar(50) DEFAULT NULL,
+  `dosen_id_itsdw` int(11) DEFAULT NULL,
+  `peneliti_id_simpel` int(11) DEFAULT NULL,
+  `kode_pegawai_resits` int(11) DEFAULT NULL,
+  `pegawai_id_silacak` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

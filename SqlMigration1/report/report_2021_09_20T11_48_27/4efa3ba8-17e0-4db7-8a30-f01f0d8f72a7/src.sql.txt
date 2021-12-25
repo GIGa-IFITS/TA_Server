@@ -1,0 +1,16 @@
+CREATE TABLE `tmst_fakultas_baru` (
+  `kode` varchar(2) NOT NULL,
+  `kode_perguruan_tinggi` varchar(6) DEFAULT NULL,
+  `kode_status_validasi` varchar(2) DEFAULT NULL,
+  `kode_log_audit` varchar(2) DEFAULT NULL,
+  `singkatan` varchar(10) DEFAULT NULL,
+  `nama_indonesia` varchar(100) DEFAULT NULL,
+  `nama_inggris` varchar(100) DEFAULT NULL,
+  `kode_dosen_kepala` varchar(18) DEFAULT NULL,
+  `tanggal_mulai_efektif` varchar(18) DEFAULT NULL,
+  `tanggal_akhir_efektif` varchar(18) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `flag` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

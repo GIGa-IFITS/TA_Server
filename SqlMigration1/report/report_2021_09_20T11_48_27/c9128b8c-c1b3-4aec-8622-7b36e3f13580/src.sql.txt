@@ -1,0 +1,7 @@
+CREATE TABLE `tran_afiliasi` (
+  `id` bigint(20) NOT NULL,
+  `kode_pegawai1` int(11) NOT NULL,
+  `kode_pegawai2` int(11) NOT NULL,
+  `jml` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

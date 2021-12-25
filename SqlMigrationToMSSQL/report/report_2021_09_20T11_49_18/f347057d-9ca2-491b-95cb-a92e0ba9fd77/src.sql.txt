@@ -1,0 +1,15 @@
+CREATE TABLE `tran_temp_publikasi` (
+  `gelar_akademik_depan` varchar(30) DEFAULT NULL,
+  `nama_dosen` varchar(500) DEFAULT NULL,
+  `kode_pegawai` int(11) DEFAULT NULL,
+  `gelar_akademik_belakang` varchar(300) DEFAULT NULL,
+  `nama_jurusan_en` varchar(255) DEFAULT NULL,
+  `kode_jurusan` char(5) DEFAULT NULL,
+  `periode_penelitian` char(4) DEFAULT NULL,
+  `pengarang` longtext DEFAULT NULL,
+  `judul_penelitian` longtext DEFAULT NULL,
+  `kode_publikasi` int(11) DEFAULT NULL,
+  `kode_fakultas` varchar(50) DEFAULT NULL,
+  `nip` varchar(50) DEFAULT NULL,
+  `tipe` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

@@ -1,0 +1,5 @@
+CREATE TABLE `tran_temp_publikasi_mapping` (
+  `id_tran_temp_publikasi` int(11) NOT NULL,
+  `kode_publikasi` int(11) NOT NULL,
+  PRIMARY KEY (`id_tran_temp_publikasi`,`kode_publikasi`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

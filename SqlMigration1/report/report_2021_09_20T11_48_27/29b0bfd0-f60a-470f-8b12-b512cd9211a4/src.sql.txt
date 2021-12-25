@@ -1,0 +1,8 @@
+CREATE TABLE `log_update` (
+  `phase` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT current_timestamp(),
+  `action` varchar(50) DEFAULT NULL,
+  `rows` int(11) DEFAULT NULL,
+  `tabel` varchar(50) DEFAULT NULL,
+  `step` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

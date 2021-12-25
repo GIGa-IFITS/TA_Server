@@ -1,0 +1,54 @@
+<html>
+<head>
+<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+<link rel=stylesheet data-name='vs/editor/editor.main' href='../monaco/editor.main.css' type='text/css'>
+<link rel='stylesheet' type='text/css' href='../css/style.css'></link>
+<script type='text/javascript' src='../js/functions.js'></script>
+<script async='async' type='text/javascript' src='../monaco/mysql.js'></script>
+<script async='async' type='text/javascript' src='../monaco/sql.js'></script>
+<script src='../monaco/loader.js'></script>
+<script src='../monaco/editor.main.nls.js'></script>
+<script src='../monaco/editor.main.js'></script>
+</head>
+<body class='sql-body' id='scrollable-body'>
+<div id='left-side' class='left-side'><div class='panel'>
+<span class='panel-title source'>&nbsp;Source</span>
+<img tabindex='0' aria-label='Previous problem' role='button' class='nav-button nav-button-disabled' id='source_previous_problem' src='../img/previous_problem.gif' onclick='handleProblemButtonClick(-1, true)' title='Previous problem' />
+<img tabindex='0' aria-label='Next problem' role='button' class='nav-button nav-button-disabled' id='source_next_problem' src='../img/next_problem.gif' onclick='handleProblemButtonClick(1, true)' title='Next problem' />
+<img tabindex='0' aria-label='Previous bookmark' role='button' class='nav-button nav-button-disabled' id='source_previous_bookmark' src='../img/previous_bookmark.gif' onclick='handleBookmarkButtonClick(-1, true)' title='Previous bookmark' />
+<img tabindex='0' aria-label='Next bookmark' role='button' class='nav-button nav-button-disabled' id='source_next_bookmark' src='../img/next_bookmark.gif' onclick='handleBookmarkButtonClick(1, true)' title='Next bookmark' />
+<img tabindex='0' aria-label='Clear bookmarks' role='button' class='nav-button nav-button-disabled' id='source_clear_bookmarks' src='../img/clear_bookmarks.gif' onclick='handleBookmarkButtonClick(0, true)' title='Clear bookmarks' />
+<a class='raw-source-link' target='_blank' aria-label='Raw source' href='./src.sql.txt');'>Raw source</a>
+</div>
+<div class='editor-container'>
+<div id='monaco-left-side'></div><pre id='monaco-left-side-sql'>
+CREATE
+	TABLE `tref_user_admin`
+		(
+			`username` longtext NOT NULL, 
+			`password` longtext NOT NULL, 
+			`id` int(11) NOT NULL
+		)  ENGINE = InnoDB DEFAULT  CHARSET = utf8mb4;
+</pre></div></div><div id='resize-bar' class='resize-bar'></div><div id='right-side' class='right-side'><div class='panel'>
+<span class='panel-title target'>&nbsp;Target</span>
+<img tabindex='0' aria-label='Previous problem' role='button' class='nav-button nav-button-disabled' id='target_previous_problem' src='../img/previous_problem.gif' onclick='handleProblemButtonClick(-1, false)' title='Previous problem' />
+<img tabindex='0' aria-label='Next problem' role='button' class='nav-button nav-button-disabled' id='target_next_problem' src='../img/next_problem.gif' onclick='handleProblemButtonClick(1, false)' title='Next problem' />
+<img tabindex='0' aria-label='Previous bookmark' role='button' class='nav-button nav-button-disabled' id='target_previous_bookmark' src='../img/previous_bookmark.gif' onclick='handleBookmarkButtonClick(-1, false)' title='Previous bookmark' />
+<img tabindex='0' aria-label='Next bookmark' role='button' class='nav-button nav-button-disabled' id='target_next_bookmark' src='../img/next_bookmark.gif' onclick='handleBookmarkButtonClick(1, false)' title='Next bookmark' />
+<img tabindex='0' aria-label='Clear bookmarks' role='button' class='nav-button nav-button-disabled' id='target_clear_bookmarks' src='../img/clear_bookmarks.gif' onclick='handleBookmarkButtonClick(0, false)' title='Clear bookmarks' />
+</div>
+<div class='editor-container'>
+<div id='monaco-right-side'></div><pre id='monaco-right-side-sql'>
+CREATE TABLE VISUALISASI_DATA.[tref_user_admin]
+(
+	username nvarchar(max) NOT NULL, 
+	password nvarchar(max) NOT NULL, 
+	id int NOT NULL
+)
+GO</pre></div></div><script>
+var sourceLanguage = 'mysql';
+var sourceEditorSelections = [{start:36, end:68, guid:'c2b503e5-690a-43c6-aa6c-7e8c3b333951', reflection:['b2462351-c872-41f7-8d6f-85b2a6a73d33'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:70, end:102, guid:'e53a29e7-7f21-466b-a9db-c253f92cb05a', reflection:['6f2c3545-cdee-4340-825a-fa13e5c800b4'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:104, end:129, guid:'92d73f88-8d10-4ac2-93fa-de341968af90', reflection:['7054067c-5a44-4aa0-b46f-8619ab9537ee'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:7, end:177, guid:'086534e9-719e-4a93-9604-146446840875', reflection:['8e073875-dcf0-435f-ae4d-7d142cb94221'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:0, end:178, guid:'5aa134a6-e8b8-4efe-9782-968d591d82a3', reflection:['b6b04aee-2c00-4fe2-a890-4b55aef75193'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:0, end:178, guid:'55a3a9e4-92f0-497d-b3b7-20d962550ae4', reflection:['b6b04aee-2c00-4fe2-a890-4b55aef75193'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]}];
+var targetLanguage = 'sql';
+var targetEditorSelections = [{start:50, end:83, guid:'b2462351-c872-41f7-8d6f-85b2a6a73d33', reflection:['c2b503e5-690a-43c6-aa6c-7e8c3b333951'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:85, end:118, guid:'6f2c3545-cdee-4340-825a-fa13e5c800b4', reflection:['e53a29e7-7f21-466b-a9db-c253f92cb05a'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:120, end:137, guid:'7054067c-5a44-4aa0-b46f-8619ab9537ee', reflection:['92d73f88-8d10-4ac2-93fa-de341968af90'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:8, end:139, guid:'8e073875-dcf0-435f-ae4d-7d142cb94221', reflection:['086534e9-719e-4a93-9604-146446840875'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]},{start:0, end:139, guid:'b6b04aee-2c00-4fe2-a890-4b55aef75193', reflection:['5aa134a6-e8b8-4efe-9782-968d591d82a3','55a3a9e4-92f0-497d-b3b7-20d962550ae4'], convmessInfoIds:[], convmessWarningIds:[], convmessErrorIds:[]}];
+</script><script src='../js/code.js'></script></body></html>

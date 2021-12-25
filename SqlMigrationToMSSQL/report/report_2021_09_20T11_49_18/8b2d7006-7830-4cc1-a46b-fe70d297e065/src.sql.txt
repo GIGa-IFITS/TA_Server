@@ -1,0 +1,12 @@
+CREATE TABLE `tmst_tags` (
+  `id` int(11) NOT NULL,
+  `kode_dosen` varchar(50) NOT NULL,
+  `nip` varchar(50) NOT NULL,
+  `id_bahasa` varchar(255) DEFAULT NULL,
+  `bidang_ahli` varchar(150) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `flag` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

@@ -1,0 +1,9 @@
+CREATE TABLE `tref_media_publikasi` (
+  `kode` varchar(255) NOT NULL,
+  `deskripsi` varchar(255) DEFAULT NULL,
+  `kode_log_audit` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

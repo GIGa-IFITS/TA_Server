@@ -1,0 +1,4 @@
+./venv/Scripts/Activate
+$env:FLASK_APP = ".\server.py"
+$env:FLASK_ENV = "development"
+flask run --host=0.0.0.0 --cert=adhoc

@@ -1,0 +1,9 @@
+CREATE TABLE `tref_bidang_ahli` (
+  `kode` int(11) NOT NULL,
+  `id_bahasa` varchar(255) DEFAULT NULL,
+  `bidang_ahli` varchar(150) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

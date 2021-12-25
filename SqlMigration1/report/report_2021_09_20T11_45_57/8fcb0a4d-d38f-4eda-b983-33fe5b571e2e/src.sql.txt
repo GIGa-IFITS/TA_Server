@@ -1,0 +1,18 @@
+CREATE TABLE `tmst_publikasi` (
+  `id` int(11) NOT NULL,
+  `judul` longtext DEFAULT NULL,
+  `abstrak` longtext DEFAULT NULL,
+  `tahun` int(11) DEFAULT NULL,
+  `bulan` int(11) DEFAULT NULL,
+  `kode_dosen` int(11) DEFAULT NULL,
+  `kode_kegiatan_publikasi` varchar(2) DEFAULT NULL,
+  `kode_media_publikasi` varchar(1) DEFAULT NULL,
+  `kata_kunci` longtext DEFAULT NULL,
+  `keterangan_pub` longtext DEFAULT NULL,
+  `url` longtext DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `flag` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

@@ -1,0 +1,13 @@
+CREATE TABLE `mapping_dosen_laboratorium` (
+  `kode` int(11) NOT NULL,
+  `kode_dosen` varchar(255) NOT NULL,
+  `kode_laboratorium` int(11) DEFAULT NULL,
+  `kode_log_audit` varchar(255) DEFAULT NULL,
+  `status_ketua` varchar(1) DEFAULT NULL,
+  `periode_aktif` varchar(255) DEFAULT NULL,
+  `deleted_at` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `kode_periode_pelaporan` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

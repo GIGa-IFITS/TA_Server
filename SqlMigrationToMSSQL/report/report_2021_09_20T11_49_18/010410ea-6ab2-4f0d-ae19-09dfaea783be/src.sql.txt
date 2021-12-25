@@ -1,0 +1,8 @@
+CREATE TABLE `tran_material_link` (
+  `kode` int(11) NOT NULL,
+  `kode_fakultas` varchar(2) DEFAULT NULL,
+  `kode_jurusan` varchar(2) DEFAULT NULL,
+  `kode_pegawai` varchar(255) DEFAULT NULL,
+  `link_material` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`kode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
