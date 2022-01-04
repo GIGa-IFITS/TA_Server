@@ -343,7 +343,7 @@ def publikasi():
             if kode_fakultas == "none" :
 
                 arrayLaboratorium = []
-                cursor.execute("SELECT peg.kode_fakultas, fak.nama_indonesia, COUNT(peg.kode_fakultas) as jumlah_publikasi from tmst_publikasi as pub INNER JOIN tmst_pegawai as peg ON peg.kode = pub.kode_dosen INNER JOIN tmst_fakultas_baru as fak ON fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_indonesia ORDER BY peg.kode_fakultas;")
+                cursor.execute("SELECT peg.kode_fakultas, fak.nama_indonesia, COUNT(peg.kode_fakultas) as jumlah_publikasi from ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_indonesia ORDER BY peg.kode_fakultas;")
                 # print(departemen_kode)
                 
                 for row in cursor :
