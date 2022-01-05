@@ -177,12 +177,12 @@ def Peneliti():
                 if facultySort == 'none' :
                     temp_row = None
                     arrayPeneliti = []
-                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_indonesia, COUNT(peg.kode) as jumlah FROM ta.visualisasi_data.tmst_pegawai as peg, ta.visualisasi_data.tmst_fakultas_baru as fak WHERE fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_indonesia")
+                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode) as jumlah FROM ta.visualisasi_data.tmst_pegawai as peg, ta.visualisasi_data.tmst_fakultas_baru as fak WHERE fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_inggris")
                     print("Fakultas=None")
                     
                     for row in cursor :
                         x = Serialisasi(kode_fakultas = row.kode_fakultas,
-                                        nama_fakultas = row.nama_indonesia,
+                                        nama_fakultas = row.nama_inggris,
                                         jumlah = row.jumlah)
                         temp_row = x.__dict__
                         arrayPeneliti.append(temp_row)
@@ -194,7 +194,7 @@ def Peneliti():
                 
                     temp_row = None
                     arrayPeneliti = []
-                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_indonesia as nama_fakultas, peg.kode_jurusan, jur.nama_indonesia as nama_departemen, count(peg.kode_jurusan) as fakultas_publikasi  FROM ta.visualisasi_data.tmst_pegawai as peg INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode WHERE peg.kode_fakultas = "+str(facultySort)+" GROUP BY peg.kode_fakultas, peg.kode_jurusan, jur.nama_indonesia, fak.nama_indonesia")
+                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris as nama_fakultas, peg.kode_jurusan, jur.nama_inggris as nama_departemen, count(peg.kode_jurusan) as fakultas_publikasi  FROM ta.visualisasi_data.tmst_pegawai as peg INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode WHERE peg.kode_fakultas = "+str(facultySort)+" GROUP BY peg.kode_fakultas, peg.kode_jurusan, jur.nama_inggris, fak.nama_inggris")
                     print("Fakultas=Available, Departement=None")
 
                     for row in cursor :
@@ -214,7 +214,7 @@ def Peneliti():
                     
                 temp_row = None
                 arrayPeneliti = []
-                cursor.execute("SELECT peg.nama, peg.kode as kode, jur.nama_indonesia as nama_departemen, peg.kode_jurusan as kode_jurusan, COUNT(pub.id) as jumlah  FROM ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jur ON jur.kode = peg.kode_jurusan WHERE peg.kode_jurusan = "+str(deptSort)+" GROUP BY peg.kode, peg.nama, peg.kode_jurusan, jur.nama_indonesia ORDER BY peg.kode_jurusan;")
+                cursor.execute("SELECT peg.nama, peg.kode as kode, jur.nama_inggris as nama_departemen, peg.kode_jurusan as kode_jurusan, COUNT(pub.id) as jumlah  FROM ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jur ON jur.kode = peg.kode_jurusan WHERE peg.kode_jurusan = "+str(deptSort)+" GROUP BY peg.kode, peg.nama, peg.kode_jurusan, jur.nama_inggris ORDER BY peg.kode_jurusan;")
                 print("Fakultas=Available, Departement=Available")
 
                 for row in cursor :
@@ -270,7 +270,7 @@ def gelarPeneliti():
             if id_target == "none" :
 
                 arrayGelar = []
-                cursor.execute("SELECT TRIM(' -' FROM kode_jenjang_pendidikan) as jenjang_pendidikan, COUNT(kode_jenjang_pendidikan) as jumlah FROM ta.visualisasi_data.tmst_pegawai GROUP BY kode_jenjang_pendidikan") 
+                cursor.execute("SELECT kode_jenjang_pendidikan as jenjang_pendidikan, COUNT(kode_jenjang_pendidikan) as jumlah FROM ta.visualisasi_data.tmst_pegawai GROUP BY kode_jenjang_pendidikan") 
                 
                 for row in cursor :
                     
@@ -343,13 +343,13 @@ def publikasi():
             if kode_fakultas == "none" :
 
                 arrayLaboratorium = []
-                cursor.execute("SELECT peg.kode_fakultas, fak.nama_indonesia, COUNT(peg.kode_fakultas) as jumlah_publikasi from ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_indonesia ORDER BY peg.kode_fakultas;")
+                cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode_fakultas) as jumlah_publikasi from ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_inggris ORDER BY peg.kode_fakultas;")
                 # print(departemen_kode)
                 
                 for row in cursor :
                     
                     fakultas_lab = row.kode_fakultas
-                    nama_fakultas = row.nama_indonesia
+                    nama_fakultas = row.nama_inggris
                     jumlah_publikasi = row.jumlah_publikasi
 
                     x = Serialisasi(kode_fakultas = fakultas_lab,
@@ -370,8 +370,8 @@ def publikasi():
                 if kata_kunci == None :
 
                     arrayLaboratorium = []
-                    # cursor.execute("SELECT lab.kode_jurusan as fakultas, lab.kode_fakultas as kode_jurusan, jurbar.nama_indonesia, COUNT(anglab.kode_pegawai) as jumlah  FROM ta.visualisasi_data.tmst_laboratorium_baru as lab  INNER JOIN ta.visualisasi_data.anggota_labs as anglab ON anglab.kode_labs = lab.kode INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jurbar ON lab.kode_fakultas = jurbar.kode WHERE lab.kode_jurusan = "+str(id_target)+" GROUP BY lab.kode_fakultas, lab.kode_jurusan, jurbar.nama_indonesia ORDER BY lab.kode_jurusan;")
-                    cursor.execute("SELECT katkun.kode_fakultas, fak.nama_indonesia as nama_fakultas, katkun.kata, katkun.idf, katkun.df from ta.visualisasi_data.tmst_bobot_kata_kunci as katkun INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON katkun.kode_fakultas = fak.kode WHERE katkun.kode_fakultas = "+str(kode_fakultas)+";")
+                    # cursor.execute("SELECT lab.kode_jurusan as fakultas, lab.kode_fakultas as kode_jurusan, jurbar.nama_inggris, COUNT(anglab.kode_pegawai) as jumlah  FROM ta.visualisasi_data.tmst_laboratorium_baru as lab  INNER JOIN ta.visualisasi_data.anggota_labs as anglab ON anglab.kode_labs = lab.kode INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jurbar ON lab.kode_fakultas = jurbar.kode WHERE lab.kode_jurusan = "+str(id_target)+" GROUP BY lab.kode_fakultas, lab.kode_jurusan, jurbar.nama_inggris ORDER BY lab.kode_jurusan;")
+                    cursor.execute("SELECT katkun.kode_fakultas, fak.nama_inggris as nama_fakultas, katkun.kata, katkun.idf, katkun.df from ta.visualisasi_data.tmst_bobot_kata_kunci as katkun INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON katkun.kode_fakultas = fak.kode WHERE katkun.kode_fakultas = "+str(kode_fakultas)+";")
 
                     
                     for row in cursor :
@@ -400,7 +400,7 @@ def publikasi():
                     if kode_publikasi == None :
 
                         arrayLaboratorium = []
-                        # cursor.execute("SELECT lab.kode_fakultas as jurusan, lab.kode_jurusan as fakultas, COUNT(anglab.kode_pegawai) as jumlah, lab.nama_indonesia FROM ta.visualisasi_data.tmst_laboratorium_baru as lab INNER JOIN ta.visualisasi_data.anggota_labs as anglab ON anglab.kode_labs = lab.kode WHERE lab.kode_fakultas = "+str(departemen_kode)+" GROUP BY lab.kode_fakultas, lab.kode_jurusan, lab.nama_indonesia ORDER BY lab.kode_jurusan")
+                        # cursor.execute("SELECT lab.kode_fakultas as jurusan, lab.kode_jurusan as fakultas, COUNT(anglab.kode_pegawai) as jumlah, lab.nama_inggris FROM ta.visualisasi_data.tmst_laboratorium_baru as lab INNER JOIN ta.visualisasi_data.anggota_labs as anglab ON anglab.kode_labs = lab.kode WHERE lab.kode_fakultas = "+str(departemen_kode)+" GROUP BY lab.kode_fakultas, lab.kode_jurusan, lab.nama_inggris ORDER BY lab.kode_jurusan")
                         cursor.execute("SELECT pub.kode_dosen, peg.nama, COUNT(pub.judul) as jumlah_publikasi FROM ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen WHERE pub.judul LIKE '%"+str(kata_kunci)+"%' AND peg.kode_fakultas = "+str(kode_fakultas)+"GROUP BY peg.nama, kode_dosen ")
 
                         for row in cursor :
@@ -453,7 +453,7 @@ def detailPeneliti():
             temp_row = None
             id_target = request.args.get('id_peneliti')
             arrayDetailPeneliti = []
-            cursor.execute('SELECT peg.nama AS nama_dosen, peg.tanggal_lahir as tanggal_lahir, fak.nama_indonesia AS nama_fakultas, jur.nama_indonesia AS nama_jurusan, maptemp.journals, maptemp.conferences, maptemp.books, maptemp.thesis, maptemp.paten, maptemp.research FROM ta.visualisasi_data.tmst_pegawai AS peg  INNER JOIN ta.visualisasi_data.tmst_fakultas_baru AS fak ON (peg.kode_fakultas = fak.kode)  INNER JOIN ta.visualisasi_data.tmst_jurusan_baru AS jur ON (peg.kode_jurusan = jur.kode) INNER JOIN ta.visualisasi_data.mapping_temp_dosen AS maptemp ON (peg.kode = maptemp.kode_pegawai) WHERE peg.kode = '+str(id_target)+';') 
+            cursor.execute('SELECT peg.nama AS nama_dosen, peg.tanggal_lahir as tanggal_lahir, fak.nama_inggris AS nama_fakultas, jur.nama_inggris AS nama_jurusan, maptemp.journals, maptemp.conferences, maptemp.books, maptemp.thesis, maptemp.paten, maptemp.research FROM ta.visualisasi_data.tmst_pegawai AS peg  INNER JOIN ta.visualisasi_data.tmst_fakultas_baru AS fak ON (peg.kode_fakultas = fak.kode)  INNER JOIN ta.visualisasi_data.tmst_jurusan_baru AS jur ON (peg.kode_jurusan = jur.kode) INNER JOIN ta.visualisasi_data.mapping_temp_dosen AS maptemp ON (peg.kode = maptemp.kode_pegawai) WHERE peg.kode = '+str(id_target)+';') 
             for row in cursor :
                 total_publikasi = int(row.journals) + int(row.conferences) + int(row.books) + int(row.thesis) + int(row.paten) + int(row.research)
                 x = Serialisasi(nama = row.nama_dosen,
