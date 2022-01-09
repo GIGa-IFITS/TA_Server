@@ -270,7 +270,7 @@ def gelarPeneliti():
             if id_target == "none" :
 
                 arrayGelar = []
-                cursor.execute("SELECT kode_jenjang_pendidikan as jenjang_pendidikan, COUNT(kode_jenjang_pendidikan) as jumlah FROM ta.visualisasi_data.tmst_pegawai GROUP BY kode_jenjang_pendidikan") 
+                cursor.execute("SELECT kode_jenjang_pendidikan as jenjang_pendidikan, COUNT(kode_jenjang_pendidikan) as jumlah FROM ta.visualisasi_data.tmst_pegawai WHERE kode_jenjang_pendidikan IN ('S1', 'S2', 'S3') GROUP BY kode_jenjang_pendidikan") 
                 
                 for row in cursor :
                     
