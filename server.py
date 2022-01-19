@@ -177,7 +177,7 @@ def Peneliti():
                 if facultySort == 'none' :
                     temp_row = None
                     arrayPeneliti = []
-                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode) as jumlah FROM ta.visualisasi_data.tmst_pegawai as peg, ta.visualisasi_data.tmst_fakultas_baru as fak WHERE fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_inggris")
+                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode) as jumlah FROM ta.visualisasi_data.tmst_pegawai as peg, ta.visualisasi_data.tmst_fakultas_baru as fak WHERE fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_inggris HAVING COUNT(peg.kode) > 1")
                     print("Fakultas=None")
                     
                     for row in cursor :
