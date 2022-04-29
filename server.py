@@ -161,7 +161,7 @@ def Peneliti():
                     temp_row = None
                     arrayPeneliti = []
                     
-                    cursor.execute("SELECT peg.nama, peg.kode as kode, COUNT(pub.id) as jumlah FROM ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen WHERE peg.nama LIKE '"+str(abjadSort.upper())+"%' GROUP BY peg.kode, peg.nama ORDER BY peg.nama ASC;")
+                    cursor.execute("SELECT peg.nama, peg.kode as kode, COUNT(pub.id) as jumlah FROM ta.visualisasi_data.tmst_publikasi as pub INNER JOIN ta.visualisasi_data.tmst_pegawai as peg ON peg.kode = pub.kode_dosen WHERE peg.nama LIKE '"+str(abjadSort.upper())+"%' OR peg.nama LIKE ' "+str(abjadSort.upper())+"%' GROUP BY peg.kode, peg.nama ORDER BY peg.nama ASC;")
 
                     for row in cursor :
                         if row.nama is None : continue
