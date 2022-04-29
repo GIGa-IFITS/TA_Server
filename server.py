@@ -117,12 +117,13 @@ def Peneliti():
                     temp_row = None
                     arrayPeneliti = []
                     
-                    cursor.execute('SELECT peg.nama FROM ta.visualisasi_data.tmst_pegawai as peg;')
+                    cursor.execute('SELECT DISTINCT peg.kode, peg.nama FROM ta.visualisasi_data.tmst_pegawai as peg INNER JOIN ta.visualisasi_data.tmst_publikasi as pub ON peg.kode = pub.kode_dosen ORDER BY peg.nama ASC;')
      
                     for row in cursor :
                         
                         if row.nama is None : continue
                         firstLetter = nameInitial(row.nama.upper())
+                        if firstLetter is None : continue
                         isAdded = False
                         if len(abjadDict) == 0 :
                             abjadDict[firstLetter] = 1
@@ -137,7 +138,7 @@ def Peneliti():
                             if isAdded == False :
                                 abjadDict[firstLetter] = 1
 
-                    for abjad in abjadDict.keys() :
+                    for abjad in sorted(abjadDict.keys()) :
                         x = Serialisasi(inisial = abjad,
                                         total = abjadDict[abjad])
                         temp_row = x.__dict__
@@ -177,7 +178,7 @@ def Peneliti():
                 if facultySort == 'none' :
                     temp_row = None
                     arrayPeneliti = []
-                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode) as jumlah FROM ta.visualisasi_data.tmst_pegawai as peg, ta.visualisasi_data.tmst_fakultas_baru as fak WHERE fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_inggris HAVING COUNT(peg.kode) > 1")
+                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode) as jumlah FROM ta.visualisasi_data.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_dosen FROM ta.visualisasi_data.tmst_publikasi) as pub ON peg.kode = pub.kode_dosen INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode  GROUP BY peg.kode_fakultas, fak.nama_inggris HAVING COUNT(peg.kode) > 1")
                     print("Fakultas=None")
                     
                     for row in cursor :
@@ -194,7 +195,7 @@ def Peneliti():
                 
                     temp_row = None
                     arrayPeneliti = []
-                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris as nama_fakultas, peg.kode_jurusan, jur.nama_inggris as nama_departemen, count(peg.kode_jurusan) as fakultas_publikasi  FROM ta.visualisasi_data.tmst_pegawai as peg INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode WHERE peg.kode_fakultas = "+str(facultySort)+" GROUP BY peg.kode_fakultas, peg.kode_jurusan, jur.nama_inggris, fak.nama_inggris")
+                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris as nama_fakultas, peg.kode_jurusan, jur.nama_inggris as nama_departemen, count(peg.kode_jurusan) as fakultas_publikasi  FROM ta.visualisasi_data.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_dosen FROM ta.visualisasi_data.tmst_publikasi) as pub ON peg.kode = pub.kode_dosen INNER JOIN ta.visualisasi_data.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN ta.visualisasi_data.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode WHERE peg.kode_fakultas = "+str(facultySort)+" GROUP BY peg.kode_fakultas, peg.kode_jurusan, jur.nama_inggris, fak.nama_inggris")
                     print("Fakultas=Available, Departement=None")
 
                     for row in cursor :
@@ -270,7 +271,7 @@ def gelarPeneliti():
             if id_target == "none" :
 
                 arrayGelar = []
-                cursor.execute("SELECT kode_jenjang_pendidikan as jenjang_pendidikan, COUNT(kode_jenjang_pendidikan) as jumlah FROM ta.visualisasi_data.tmst_pegawai WHERE kode_jenjang_pendidikan IN ('S1', 'S2', 'S3') GROUP BY kode_jenjang_pendidikan") 
+                cursor.execute("SELECT DISTINCT peg.kode_jenjang_pendidikan as jenjang_pendidikan, COUNT(peg.kode_jenjang_pendidikan) as jumlah FROM ta.visualisasi_data.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_dosen FROM ta.visualisasi_data.tmst_publikasi) as pub ON peg.kode = pub.kode_dosen WHERE peg.kode_jenjang_pendidikan IN ('S1', 'S2', 'S3') GROUP BY peg.kode_jenjang_pendidikan") 
                 
                 for row in cursor :
                     
