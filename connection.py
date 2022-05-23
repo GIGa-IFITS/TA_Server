@@ -9,7 +9,7 @@ import pyodbc
 class config:
     app = Flask(__name__)
     config_server = 'LAPTOP-T54URQKB'
-    config_database = 'ta'
+    config_database = 'resits'
     config_UID = ''
     config_password = ''
 
