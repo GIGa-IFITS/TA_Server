@@ -178,7 +178,7 @@ def Peneliti():
                 if facultySort == 'none' :
                     temp_row = None
                     arrayPeneliti = []
-                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode) as jumlah FROM resits.dbo.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_pegawai FROM resits.dbo.tran_publikasi_dosen_tetap) as pub ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN resits.dbo.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode  GROUP BY peg.kode_fakultas, fak.nama_inggris HAVING COUNT(peg.kode) > 1")
+                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode) as jumlah FROM resits.dbo.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_pegawai FROM resits.dbo.tran_publikasi_dosen_tetap) as pub ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN resits.dbo.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode  GROUP BY peg.kode_fakultas, fak.nama_inggris HAVING COUNT(peg.kode) > 1 ORDER BY jumlah ASC")
                     print("Fakultas=None")
                     
                     for row in cursor :
@@ -195,7 +195,7 @@ def Peneliti():
                 
                     temp_row = None
                     arrayPeneliti = []
-                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris as nama_fakultas, peg.kode_jurusan, jur.nama_inggris as nama_departemen, count(peg.kode_jurusan) as fakultas_publikasi  FROM resits.dbo.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_pegawai FROM resits.dbo.tran_publikasi_dosen_tetap) as pub ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN resits.dbo.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode WHERE peg.kode_fakultas = "+str(facultySort)+" GROUP BY peg.kode_fakultas, peg.kode_jurusan, jur.nama_inggris, fak.nama_inggris")
+                    cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris as nama_fakultas, peg.kode_jurusan, jur.nama_inggris as nama_departemen, count(peg.kode_jurusan) as fakultas_publikasi  FROM resits.dbo.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_pegawai FROM resits.dbo.tran_publikasi_dosen_tetap) as pub ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON peg.kode_fakultas = fak.kode INNER JOIN resits.dbo.tmst_jurusan_baru as jur ON peg.kode_jurusan = jur.kode WHERE peg.kode_fakultas = "+str(facultySort)+" GROUP BY peg.kode_fakultas, peg.kode_jurusan, jur.nama_inggris, fak.nama_inggris ORDER BY fakultas_publikasi ASC")
                     print("Fakultas=Available, Departement=None")
 
                     for row in cursor :
@@ -271,7 +271,7 @@ def gelarPeneliti():
             if id_target == "none" :
 
                 arrayGelar = []
-                cursor.execute("SELECT DISTINCT peg.kode_jenjang_pendidikan as jenjang_pendidikan, COUNT(peg.kode_jenjang_pendidikan) as jumlah FROM resits.dbo.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_pegawai FROM resits.dbo.tran_publikasi_dosen_tetap) as pub ON peg.kode = pub.kode_pegawai WHERE peg.kode_jenjang_pendidikan IN ('S1', 'S2', 'S3') GROUP BY peg.kode_jenjang_pendidikan") 
+                cursor.execute("SELECT DISTINCT peg.kode_jenjang_pendidikan as jenjang_pendidikan, COUNT(peg.kode_jenjang_pendidikan) as jumlah FROM resits.dbo.tmst_pegawai as peg INNER JOIN (SELECT DISTINCT kode_pegawai FROM resits.dbo.tran_publikasi_dosen_tetap) as pub ON peg.kode = pub.kode_pegawai WHERE peg.kode_jenjang_pendidikan IN ('S1', 'S2', 'S3') GROUP BY peg.kode_jenjang_pendidikan ORDER BY jumlah ASC") 
                 
                 for row in cursor :
                     
@@ -344,7 +344,7 @@ def publikasi():
             if kode_fakultas == "none" :
 
                 arrayLaboratorium = []
-                cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode_fakultas) as jumlah_publikasi from resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_inggris ORDER BY peg.kode_fakultas;")
+                cursor.execute("SELECT peg.kode_fakultas, fak.nama_inggris, COUNT(peg.kode_fakultas) as jumlah_publikasi from resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON fak.kode = peg.kode_fakultas GROUP BY peg.kode_fakultas, fak.nama_inggris ORDER BY jumlah_publikasi ASC;")
                 # print(departemen_kode)
                 
                 for row in cursor :
@@ -372,7 +372,7 @@ def publikasi():
 
                     arrayLaboratorium = []
                     # cursor.execute("SELECT lab.kode_jurusan as fakultas, lab.kode_fakultas as kode_jurusan, jurbar.nama_inggris, COUNT(anglab.kode_pegawai) as jumlah  FROM resits.dbo.tmst_laboratorium_baru as lab  INNER JOIN resits.dbo.anggota_labs as anglab ON anglab.kode_labs = lab.kode INNER JOIN resits.dbo.tmst_jurusan_baru as jurbar ON lab.kode_fakultas = jurbar.kode WHERE lab.kode_jurusan = "+str(id_target)+" GROUP BY lab.kode_fakultas, lab.kode_jurusan, jurbar.nama_inggris ORDER BY lab.kode_jurusan;")
-                    cursor.execute("SELECT katkun.kode_fakultas, fak.nama_inggris as nama_fakultas, katkun.kata, katkun.idf, katkun.df from resits.dbo.tmst_bobot_kata_kunci as katkun INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON katkun.kode_fakultas = fak.kode WHERE katkun.kode_fakultas = "+str(kode_fakultas)+";")
+                    cursor.execute("SELECT katkun.kode_fakultas, fak.nama_inggris as nama_fakultas, katkun.kata, katkun.idf, katkun.df from resits.dbo.tmst_bobot_kata_kunci as katkun INNER JOIN resits.dbo.tmst_fakultas_baru as fak ON katkun.kode_fakultas = fak.kode WHERE katkun.kode_fakultas = "+str(kode_fakultas)+" ORDER BY katkun.df ASC;")
 
                     
                     for row in cursor :
