@@ -161,7 +161,7 @@ def Peneliti():
                     temp_row = None
                     arrayPeneliti = []
                     
-                    cursor.execute("SELECT peg.nama, peg.kode as kode, COUNT(pub.kode_publikasi) as jumlah FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai WHERE peg.nama LIKE '"+str(abjadSort.upper())+"%' OR peg.nama LIKE ' "+str(abjadSort.upper())+"%' GROUP BY peg.kode, peg.nama ORDER BY peg.nama ASC;")
+                    cursor.execute("SELECT peg.nama, peg.kode as kode, COUNT(pub.kode_publikasi) as jumlah FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai WHERE peg.nama LIKE '"+str(abjadSort.upper())+"%' OR peg.nama LIKE ' "+str(abjadSort.upper())+"%' GROUP BY peg.kode, peg.nama ORDER BY ltrim(peg.nama) ASC;")
 
                     for row in cursor :
                         if row.nama is None : continue
@@ -215,7 +215,7 @@ def Peneliti():
                     
                 temp_row = None
                 arrayPeneliti = []
-                cursor.execute("SELECT peg.nama, peg.kode as kode, jur.nama_inggris as nama_departemen, peg.kode_jurusan as kode_jurusan, COUNT(pub.kode_publikasi) as jumlah  FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_jurusan_baru as jur ON jur.kode = peg.kode_jurusan WHERE peg.kode_jurusan = "+str(deptSort)+" GROUP BY peg.kode, peg.nama, peg.kode_jurusan, jur.nama_inggris ORDER BY peg.nama ASC;")
+                cursor.execute("SELECT peg.nama, peg.kode as kode, jur.nama_inggris as nama_departemen, peg.kode_jurusan as kode_jurusan, COUNT(pub.kode_publikasi) as jumlah  FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai INNER JOIN resits.dbo.tmst_jurusan_baru as jur ON jur.kode = peg.kode_jurusan WHERE peg.kode_jurusan = "+str(deptSort)+" GROUP BY peg.kode, peg.nama, peg.kode_jurusan, jur.nama_inggris ORDER BY ltrim(peg.nama) ASC;")
                 print("Fakultas=Available, Departement=Available")
 
                 for row in cursor :
@@ -289,7 +289,7 @@ def gelarPeneliti():
             else :
                 
                 arrayGelar = []
-                cursor.execute("SELECT peg.nama, peg.kode as kode,peg.kode_jenjang_pendidikan as pendidikan, COUNT(pub.kode_publikasi) as jumlah FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai WHERE peg.kode_jenjang_pendidikan = '"+str(id_target)+"' GROUP BY peg.kode, peg.nama, peg.kode_jenjang_pendidikan ORDER BY peg.nama ASC;")
+                cursor.execute("SELECT peg.nama, peg.kode as kode,peg.kode_jenjang_pendidikan as pendidikan, COUNT(pub.kode_publikasi) as jumlah FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai WHERE peg.kode_jenjang_pendidikan = '"+str(id_target)+"' GROUP BY peg.kode, peg.nama, peg.kode_jenjang_pendidikan ORDER BY ltrim(peg.nama) ASC;")
                 
                 for row in cursor :
                     
@@ -402,7 +402,7 @@ def publikasi():
 
                         arrayLaboratorium = []
                         # cursor.execute("SELECT lab.kode_fakultas as jurusan, lab.kode_jurusan as fakultas, COUNT(anglab.kode_pegawai) as jumlah, lab.nama_inggris FROM resits.dbo.tmst_laboratorium_baru as lab INNER JOIN resits.dbo.anggota_labs as anglab ON anglab.kode_labs = lab.kode WHERE lab.kode_fakultas = "+str(departemen_kode)+" GROUP BY lab.kode_fakultas, lab.kode_jurusan, lab.nama_inggris ORDER BY lab.kode_jurusan")
-                        cursor.execute("SELECT pub.kode_pegawai, peg.nama, COUNT(pub.judul) as jumlah_publikasi FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai WHERE pub.judul LIKE '%"+str(kata_kunci)+"%' AND peg.kode_fakultas = "+str(kode_fakultas)+"GROUP BY peg.nama, pub.kode_pegawai ORDER BY peg.nama ASC")
+                        cursor.execute("SELECT pub.kode_pegawai, peg.nama, COUNT(pub.judul) as jumlah_publikasi FROM resits.dbo.tran_publikasi_dosen_tetap as pub INNER JOIN resits.dbo.tmst_pegawai as peg ON peg.kode = pub.kode_pegawai WHERE pub.judul LIKE '%"+str(kata_kunci)+"%' AND peg.kode_fakultas = "+str(kode_fakultas)+"GROUP BY peg.nama, pub.kode_pegawai ORDER BY ltrim(peg.nama) ASC")
 
                         for row in cursor :
                             
