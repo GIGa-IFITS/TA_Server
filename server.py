@@ -454,7 +454,7 @@ def detailPeneliti():
             temp_row = None
             id_target = request.args.get('id_peneliti')
             arrayDetailPeneliti = []
-            cursor.execute('SELECT peg.nama AS nama_dosen, peg.tanggal_lahir as tanggal_lahir, fak.nama_inggris AS nama_fakultas, jur.nama_inggris AS nama_jurusan, maptemp.journals, maptemp.conferences, maptemp.books, maptemp.thesis, maptemp.paten, maptemp.research FROM resits.dbo.tmst_pegawai AS peg  INNER JOIN resits.dbo.tmst_fakultas_baru AS fak ON (peg.kode_fakultas = fak.kode)  INNER JOIN resits.dbo.tmst_jurusan_baru AS jur ON (peg.kode_jurusan = jur.kode) INNER JOIN resits.dbo.mapping_temp_dosen AS maptemp ON (peg.kode = maptemp.kode_pegawai) WHERE peg.kode = '+str(id_target)+';') 
+            cursor.execute('SELECT peg.nama AS nama_dosen, peg.tanggal_lahir as tanggal_lahir, fak.nama_inggris AS nama_fakultas, jur.nama_inggris AS nama_jurusan, maptemp.journals, maptemp.conferences, maptemp.books, maptemp.thesis, maptemp.paten, maptemp.research FROM resits.dbo.tmst_pegawai AS peg LEFT JOIN resits.dbo.tmst_fakultas_baru AS fak ON (peg.kode_fakultas = fak.kode)  LEFT JOIN resits.dbo.tmst_jurusan_baru AS jur ON (peg.kode_jurusan = jur.kode) INNER JOIN resits.dbo.mapping_temp_dosen AS maptemp ON (peg.kode = maptemp.kode_pegawai) WHERE peg.kode = '+str(id_target)+';') 
             for row in cursor :
                 total_publikasi = int(row.journals) + int(row.conferences) + int(row.books) + int(row.thesis) + int(row.paten) + int(row.research)
                 x = Serialisasi(nama = row.nama_dosen,
